@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6ghl2qr5n81f"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_brbyh"]
+[ext_resource type="Texture2D" uid="uid://occpypit2rb3" path="res://Assets/Visual_Assets/Bunny_IdleL.png" id="2_j1yrd"]
+[ext_resource type="Texture2D" uid="uid://dxv0lfdwr1ekv" path="res://Assets/Visual_Assets/Bunny_JumpL.png" id="3_vi4tc"]
+[ext_resource type="Script" path="res://Player/animated_sprite_2d_2.gd" id="4_38q0g"]
+[ext_resource type="Texture2D" uid="uid://p4wpbihgmneh" path="res://Assets/Visual_Assets/Bunny_RunL.png" id="4_bp2pa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxv5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j1yrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bp2pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vi4tc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xn7ek"]
+radius = 58.0
+height = 142.0
+
+[node name="Player" type="Node2D"]
+position = Vector2(102, 1092)
+
+[node name="ThePlayer" type="CharacterBody2D" parent="."]
+position = Vector2(5, 7)
+script = ExtResource("1_brbyh")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ThePlayer"]
+position = Vector2(-6, -29)
+scale = Vector2(1.35681, 1.35681)
+sprite_frames = SubResource("SpriteFrames_rxv5i")
+script = ExtResource("4_38q0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThePlayer"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_xn7ek")

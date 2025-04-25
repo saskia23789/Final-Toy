@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxpdhnjj810a0"]
+
+[ext_resource type="Script" path="res://Goal/carrot.gd" id="1_2pd5r"]
+[ext_resource type="Texture2D" uid="uid://coikv6eg2ukcf" path="res://kenney_jumper-pack/PNG/Items/carrot.png" id="1_v6m4o"]
+[ext_resource type="Script" path="res://Goal/area_2d.gd" id="2_kur00"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bl02w"]
+radius = 15.5787
+height = 55.1212
+
+[node name="Carrot" type="Node2D"]
+script = ExtResource("1_2pd5r")
+
+[node name="CarrotArea2D" type="Area2D" parent="."]
+script = ExtResource("2_kur00")
+
+[node name="CarrotCollision" type="CollisionShape2D" parent="CarrotArea2D"]
+position = Vector2(526, 216)
+rotation = -0.767945
+shape = SubResource("CapsuleShape2D_bl02w")
+
+[node name="CarrotSprite" type="Sprite2D" parent="CarrotArea2D"]
+position = Vector2(508, 202)
+texture = ExtResource("1_v6m4o")

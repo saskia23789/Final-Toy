@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3it20fj1x6sn"]
+
+[ext_resource type="Texture2D" uid="uid://cuqyrmp0elo4q" path="res://Assets/Visual_Assets/Dirt_Block.png" id="1_fa7kq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h181j"]
+size = Vector2(87.1051, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i07tn"]
+size = Vector2(381.148, 69.8286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltv48"]
+size = Vector2(73.7225, 116)
+
+[node name="Obstacles" type="Node2D"]
+
+[node name="Block3" type="StaticBody2D" parent="."]
+position = Vector2(-831.999, -312.998)
+scale = Vector2(1.76798, 0.999999)
+
+[node name="Block2" type="Sprite2D" parent="Block3"]
+position = Vector2(572.97, 1040)
+scale = Vector2(1.08316, 2.455)
+texture = ExtResource("1_fa7kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
+position = Vector2(568.445, 1031)
+shape = SubResource("RectangleShape2D_h181j")
+
+[node name="Block1" type="StaticBody2D" parent="."]
+position = Vector2(575.75, 1048)
+scale = Vector2(0.435526, 1.48936)
+
+[node name="Block1" type="Sprite2D" parent="Block1"]
+position = Vector2(23.5348, -8.72858)
+scale = Vector2(4.95952, 1.14132)
+texture = ExtResource("1_fa7kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block1"]
+position = Vector2(0.573975, -12.0856)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_i07tn")
+
+[node name="Block4" type="StaticBody2D" parent="."]
+position = Vector2(560, 288)
+scale = Vector2(0.344737, 1)
+
+[node name="Block 3" type="Sprite2D" parent="Block4"]
+position = Vector2(20.3053, 15)
+scale = Vector2(4.92939, 1.85)
+texture = ExtResource("1_fa7kq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Block4"]
+position = Vector2(-0.493042, 11)
+scale = Vector2(5.12849, 1)
+shape = SubResource("RectangleShape2D_ltv48")

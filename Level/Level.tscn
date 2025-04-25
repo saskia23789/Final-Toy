@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://k5lqsjacq2h6"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_4x3ey"]
+[ext_resource type="Texture2D" uid="uid://druej8h7rcfs2" path="res://Assets/Visual_Assets/BG_Mountian.png" id="2_2so5k"]
+[ext_resource type="PackedScene" uid="uid://c6ghl2qr5n81f" path="res://Player/player.tscn" id="2_vyy7l"]
+[ext_resource type="Texture2D" uid="uid://caemmh4uwer1s" path="res://Assets/Visual_Assets/Grass_Ground.png" id="3_6iltk"]
+[ext_resource type="PackedScene" uid="uid://c3it20fj1x6sn" path="res://Obstacles/obstacles.tscn" id="5_vjofs"]
+[ext_resource type="PackedScene" uid="uid://dxpdhnjj810a0" path="res://Goal/carrot.tscn" id="6_otxit"]
+[ext_resource type="PackedScene" uid="uid://c0d4igo5ljbjr" path="res://Goal/win_screen.tscn" id="7_68q65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dcj0"]
+size = Vector2(201.201, 86.9799)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iccl7"]
+size = Vector2(828, 150)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usr35"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik1hu"]
+size = Vector2(288, 1363)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c846j"]
+size = Vector2(354, 1319)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_4x3ey")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(362, 840.5)
+scale = Vector2(4.16, 4.91714)
+texture = ExtResource("2_2so5k")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(357, 1368)
+scale = Vector2(4.96517, 2.23435)
+
+[node name="Grass" type="Sprite2D" parent="Ground"]
+position = Vector2(-37.1068, -71.833)
+scale = Vector2(0.41239, 0.776513)
+texture = ExtResource("3_6iltk")
+
+[node name="Grass2" type="Sprite2D" parent="Ground"]
+position = Vector2(41.2876, -72.2805)
+scale = Vector2(0.443087, 0.780988)
+texture = ExtResource("3_6iltk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0.503502, -6.34265)
+shape = SubResource("RectangleShape2D_6dcj0")
+
+[node name="Player" parent="." instance=ExtResource("2_vyy7l")]
+position = Vector2(90, 1166)
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(383, -77)
+shape = SubResource("RectangleShape2D_iccl7")
+
+[node name="RightBorder" type="StaticBody2D" parent="Borders"]
+physics_material_override = SubResource("PhysicsMaterial_usr35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RightBorder"]
+position = Vector2(894, 665)
+shape = SubResource("RectangleShape2D_ik1hu")
+
+[node name="LeftBorder" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/LeftBorder"]
+position = Vector2(-177, 648)
+shape = SubResource("RectangleShape2D_c846j")
+
+[node name="Obstacles" parent="." instance=ExtResource("5_vjofs")]
+position = Vector2(-38, 10)
+
+[node name="Carrot" parent="." instance=ExtResource("6_otxit")]
+position = Vector2(0, 1)
+
+[node name="Win_Screen" parent="." instance=ExtResource("7_68q65")]
+visible = false
